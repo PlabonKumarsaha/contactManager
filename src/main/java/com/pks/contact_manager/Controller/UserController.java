@@ -21,7 +21,6 @@ public class UserController {
         user.setAbout("ss");
         user.setEmail("gamil");
         user.setPassword("pass");
-       // user.setImageUrl();
         userRepository.save(user);
         return "working";
     }
