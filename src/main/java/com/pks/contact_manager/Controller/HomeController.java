@@ -19,4 +19,10 @@ public class HomeController {
         model.addAttribute("title","About-smart contract");
         return "about";
     }
+
+    @RequestMapping("/signUp/")
+    public String getSignUp( Model model) {
+        model.addAttribute("title","Register-smart contract");
+        return "signup";
+    }
 }
