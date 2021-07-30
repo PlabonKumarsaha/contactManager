@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController {
 
-    @RequestMapping("/home")
+    @RequestMapping("/")
     public String getHome( Model model) {
         model.addAttribute("title","home-smart contract");
         return "home";
