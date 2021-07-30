@@ -1,6 +1,7 @@
 package com.pks.contact_manager.Controller;
 
 
+import com.pks.contact_manager.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ public class HomeController {
     @RequestMapping("/signUp/")
     public String getSignUp( Model model) {
         model.addAttribute("title","Register-smart contract");
+        model.addAttribute("user", new User());
         return "signup";
     }
 }
