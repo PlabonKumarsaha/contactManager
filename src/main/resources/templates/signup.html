@@ -13,34 +13,41 @@
             <div class="col-md-8 offset-md-2">
                 <div class="my-card">
                     <h1 class="text-center">Register here</h1>
-                    <form action="" th:action="@{/do_register}" method="post" th:object="@{user}">
+                    <form action="" th:action="@{/do_register}" method="post">
+<!--                          th:object="@{user}">-->
 
                         <!-- Name field -->
                         <div class="form-group">
                             <label for="name_field">Your Name</label>
                             <input type="text" class="form-control" id="name_field"
-                                   aria-describedby="emailHelp" placeholder="Enter Your name" required
-                            th:value="${user.name}">
+                                   aria-describedby="emailHelp" placeholder="Enter Your name" name="name" required >
+
+                            <!--                            th:value="${user.name}"-->
                         </div>
 
                         <!-- Email field -->
                         <div class="form-group">
                             <label for="email_field">Your Email</label>
                             <input type="email" class="form-control" id="email_field"
-                                   aria-describedby="emailHelp" placeholder="Enter Your email" th:value="${user.email}" required >
+                                   aria-describedby="emailHelp" placeholder="Enter Your email" name="email" required >
+
+                            <!--                                   th:value="${user.email}"-->
                         </div>
 
                         <!-- Password field -->
                         <div class="form-group">
                             <label for="password_field">Your Password</label>
                             <input type="password" class="form-control" id="password_field"
-                                   aria-describedby="emailHelp" placeholder="Enter Your Password" required >
+                                   aria-describedby="emailHelp" placeholder="Enter Your Password" name="password" required >
+
+                            <!--                                   th:value="${user.password}"-->
                         </div>
                         <br>
                         <!-- About field -->
                         <div class="form-group">
                             <textarea rows="6"  class="form-control" id="about_field"
-                                   placeholder="something about yourself" th:value="${user.about}"></textarea>
+                                   placeholder="something about yourself" name="about"
+                            ></textarea>
                         </div>
                         <br>
                         <div class="form-group form-check">
