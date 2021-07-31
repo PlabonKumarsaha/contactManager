@@ -51,13 +51,14 @@ public class HomeController {
            User savedUser = userRepository.save(user);
            session.setAttribute("message",new Message("successfully registered","alert-success"));
            model.addAttribute("user",new User());
-           return "signup";
        }catch (Exception e) {
            e.printStackTrace();
            model.addAttribute("user",user);
            session.setAttribute("message",new Message(e.getMessage().toString(),"alert-error"));
            return "signup";
        }
+        return "signup";
+
 
     }
 
