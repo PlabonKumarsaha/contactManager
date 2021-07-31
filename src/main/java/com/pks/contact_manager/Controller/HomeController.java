@@ -31,9 +31,8 @@ public class HomeController {
     @RequestMapping(value = "/do_register", method = RequestMethod.POST)
     public String registerUser( @ModelAttribute("user") User user , @RequestParam(value ="agreement",defaultValue = "false") boolean agreement,
                                 Model model) {
-        System.out.println("Agreement"+agreement);
-        System.out.println("User"+user);
-        System.out.println();
+        System.out.println("Agreement "+agreement);
+        System.out.println("User : "+user);
         return "signup";
     }
 
