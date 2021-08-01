@@ -9,20 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
     UserRepository userRepository;
 
-    @GetMapping("/test")
-    @ResponseBody
-    public String test(){
-        User user = new User();
-        user.setAbout("ss");
-        user.setEmail("gamil");
-        user.setPassword("pass");
-        userRepository.save(user);
-        return "working";
+    @GetMapping("/index")
+    public String dashBoard(){
+        return "user_dashboard";
     }
 
 }
