@@ -5,6 +5,7 @@ import com.pks.contact_manager.dao.UserRepository;
 import com.pks.contact_manager.entity.User;
 import com.pks.contact_manager.helper.Message;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,9 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
+
+    @Autowired
+    public BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     UserRepository userRepository;
 
@@ -46,6 +50,7 @@ public class HomeController {
            user.setRole("ROLE_USER");
            user.setEnabled(true);
            user.setImageUrl("default.png");
+           user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
            System.out.println("Agreement "+agreement);
            System.out.println("User : "+user);
            User savedUser = userRepository.save(user);
