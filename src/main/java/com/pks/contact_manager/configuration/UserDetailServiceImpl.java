@@ -12,6 +12,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
+    //the user's user Name is loaded in the userName variable
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         //fetch user from database
