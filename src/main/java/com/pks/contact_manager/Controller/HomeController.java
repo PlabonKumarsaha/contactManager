@@ -73,4 +73,10 @@ public class HomeController {
         return "login";
     }
 
+    @GetMapping("/login-fail")
+    public String loginFails(Model model) {
+        model.addAttribute("title","Login Failed");
+        return "login-fail";
+    }
+
 }
