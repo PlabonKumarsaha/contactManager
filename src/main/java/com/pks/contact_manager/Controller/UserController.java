@@ -48,12 +48,18 @@ public class UserController {
     @PostMapping("/process-contact")
     public String processContact(@ModelAttribute("contact") Contact contact, Principal principal) {
 
-        String name = principal.getName();
-        User user = userRepository.getUserByUserName(name);
-        contact.setUser(user);
-        user.getContacts().add(contact);
-        this.userRepository.save(user);
-        System.out.println("data"+contact);
+        try{
+            String name = principal.getName();
+            User user = userRepository.getUserByUserName(name);
+            contact.setUser(user);
+            user.getContacts().add(contact);
+            this.userRepository.save(user);
+            System.out.println("data"+contact);
+        }catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("ERROR : "+e.getMessage());
+        }
+
 
         return "normal/add_contact_form";
     }
