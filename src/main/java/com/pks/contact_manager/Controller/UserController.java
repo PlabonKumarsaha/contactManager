@@ -1,11 +1,13 @@
 package com.pks.contact_manager.Controller;
 
 import com.pks.contact_manager.dao.UserRepository;
+import com.pks.contact_manager.entity.Contact;
 import com.pks.contact_manager.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,16 +21,33 @@ public class UserController {
     UserRepository userRepository;
 
     // principle stores the unique value of a user. In this case email.
-    @GetMapping("/index")
-    public String dashBoard(Model model, Principal principal){
+    //runs everytime for each and every other functions. Adds common data to response
+    @ModelAttribute
+    public void addCommonData(Model model, Principal principal) {
+
         String userName = principal.getName();
         User user = userRepository.getUserByUserName(userName);
         System.out.println("User Name "+userName);
         System.out.println("User  "+user);
         model.addAttribute("user",user);
 
+    }
+    //dash board home
+    @GetMapping("/index")
+    public String dashBoard(Model model, Principal principal){
 
         return "normal/user_dashboard";
     }
+
+    //open add form handler
+    @GetMapping("/add-contact")
+    public String addContact(Model model) {
+
+        model.addAttribute("title","Add contact");
+        model.addAttribute("contact", new Contact());
+        return "normal/add_contact_form";
+    }
+
+
 
 }
