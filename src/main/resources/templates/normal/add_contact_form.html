@@ -7,8 +7,107 @@
 </head>
 <body>
 <section>
-  <h1>This is private dash board</h1>
 
+  <div class="card">
+    <div class="card-body">
+      <h1 class="text-center">Add contact</h1>
+      <div class="container-fluid mt-1">
+        <div class="row">
+
+          <div class="col-md-10 offset-md-1">
+
+            <form action="#"
+            th:object="${contact}"
+            enctype="multipart/form-data"
+            method="post"
+            th:action="@{/user/process-contact}">
+
+              <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="fa fa-plus"></i>
+                    </div>
+                </div>
+                <input type="text" id="firstName" name="name" placeholder="Enter name here" class="form-control">
+              </div>
+              <br>
+
+              <!-- second name -->
+
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fa fa-plus"></i>
+                  </div>
+                </div>
+                <input type="text" id="secondName" name="SecondName" placeholder="Enter Second here" class="form-control">
+              </div>
+              <br>
+
+
+              <!-- work name -->
+
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fa fa-plus"></i>
+                  </div>
+                </div>
+                <input type="text" id="work" name="work" placeholder="Enter work place here" class="form-control">
+              </div>
+              <br>
+
+
+
+              <!-- email name -->
+
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fa fa-plus"></i>
+                  </div>
+                </div>
+                <input type="text" id="email" name="email" placeholder="Enter email here" class="form-control">
+              </div>
+              <br>
+
+              <!-- phone name -->
+
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fa fa-plus"></i>
+                  </div>
+                </div>
+                <input type="text" id="phone" name="phone" placeholder="Enter phone no here" class="form-control">
+              </div>
+              <br>
+
+              <!-- Description  -->
+
+              <div class="form-group mt-3">
+                <textarea placeholder="enter your desciption" class="form-control" name="description" id="description" cols="30" rows="10">
+
+
+                </textarea>
+
+              </div>
+
+
+
+
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
 </section>
 </body>
 </html>
