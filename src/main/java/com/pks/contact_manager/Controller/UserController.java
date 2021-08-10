@@ -27,6 +27,7 @@ public class UserController {
         System.out.println("User  "+user);
         model.addAttribute("user",user);
 
+
         return "normal/user_dashboard";
     }
 
