@@ -6,10 +6,7 @@ import com.pks.contact_manager.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -45,6 +42,19 @@ public class UserController {
 
         model.addAttribute("title","Add contact");
         model.addAttribute("contact", new Contact());
+        return "normal/add_contact_form";
+    }
+
+    @PostMapping("/process-contact")
+    public String processContact(@ModelAttribute("contact") Contact contact, Principal principal) {
+
+        String name = principal.getName();
+        User user = userRepository.getUserByUserName(name);
+        contact.setUser(user);
+        user.getContacts().add(contact);
+        this.userRepository.save(user);
+        System.out.println("data"+contact);
+
         return "normal/add_contact_form";
     }
 
