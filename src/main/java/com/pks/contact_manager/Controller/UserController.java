@@ -53,7 +53,7 @@ public class UserController {
     }
 
     @PostMapping("/process-contact")
-    public String processContact(@ModelAttribute("contact") Contact contact, @RequestParam("profileImage")MultipartFile file
+    public String processContact(@ModelAttribute("contact") Contact contact
             , Principal principal) {
 
         try{
@@ -61,14 +61,15 @@ public class UserController {
             User user = userRepository.getUserByUserName(name);
 
             //processing and uploading file
-            if(file.isEmpty()){
-
-            }else {
-                contact.setImage(file.getOriginalFilename());
-                File saveFile = new ClassPathResource("static/img").getFile();
-                Path path = Paths.get(saveFile.getAbsolutePath()+File.separator+file.getOriginalFilename());
-                Files.copy(file.getInputStream(),path, StandardCopyOption.REPLACE_EXISTING);
-            }
+//            if(file.isEmpty()){
+//
+//            }else {
+//                contact.setImage(file.getOriginalFilename());
+//                File saveFile = new ClassPathResource("static/img").getFile();
+//                Path path = Paths.get(saveFile.getAbsolutePath()+File.separator+file.getOriginalFilename());
+//                Files.copy(file.getInputStream(),path, StandardCopyOption.REPLACE_EXISTING);
+//                System.out.println("Image is uploaded");
+//            }
             contact.setUser(user);
             user.getContacts().add(contact);
             this.userRepository.save(user);
